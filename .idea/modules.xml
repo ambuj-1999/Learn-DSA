@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Arraylist/Arraylist.iml" filepath="$PROJECT_DIR$/Arraylist/Arraylist.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CarryForwardAndSubArrays/CarryForwardAndSubArrays.iml" filepath="$PROJECT_DIR$/CarryForwardAndSubArrays/CarryForwardAndSubArrays.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HashmapAndHashset/HashmapAndHashset.iml" filepath="$PROJECT_DIR$/HashmapAndHashset/HashmapAndHashset.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/IdeaProjects.iml" filepath="$PROJECT_DIR$/.idea/IdeaProjects.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Matrix/Matrix.iml" filepath="$PROJECT_DIR$/Matrix/Matrix.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Strings/Strings.iml" filepath="$PROJECT_DIR$/Strings/Strings.iml" />
+      <module fileurl="file://$PROJECT_DIR$/misellenious/misellenious.iml" filepath="$PROJECT_DIR$/misellenious/misellenious.iml" />
+      <module fileurl="file://$PROJECT_DIR$/prefixSum/prefixSum.iml" filepath="$PROJECT_DIR$/prefixSum/prefixSum.iml" />
+    </modules>
+  </component>
+</project>
