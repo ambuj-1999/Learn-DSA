@@ -1,6 +1,7 @@
 import java.util.*;
 
 public class Main {
+    //i_g pairs problem using BRUTE FORCE.
     public static int countPairs1(String S){
         int n = S.length();
         int count = 0;
@@ -15,6 +16,20 @@ public class Main {
         }
         return count;
     }
+    //leaders in array using carry forward.
+    public static ArrayList<Integer> leadersInArray(int[] arr){
+        int n = arr.length;
+        int max = Integer.MIN_VALUE;
+        ArrayList<Integer> ans = new ArrayList<>();
+        for(int i=n-1; i>=0; i--){
+            if(arr[i]>max){
+                max = arr[i];
+                ans.add(arr[i]);
+            }
+        }
+        return ans;
+    }
+    //I_G pairs using carrybackward.
     public static int countPairs2(String S){
         int n = S.length();
         int count = 0;
@@ -29,6 +44,7 @@ public class Main {
         }
         return count;
     }
+    //I_G pairs using carryforward.
     public  static int countPairs3(String S){
         int n = S.length();
         int count_A = 0;
@@ -43,6 +59,7 @@ public class Main {
         }
         return count;
     }
+    //calculating total no of sub arrays.
     public static ArrayList<ArrayList<Integer>> totalSubArrays(int[] A) {
         int n = A.length;
         int len = n*(n+1)/2;
@@ -60,7 +77,7 @@ public class Main {
         return ans;
     }
 
-
+    //getting maxMinSubarray using BRUTEFORCE.
     public static int maxMinSubarray1(int[] arr){
         int n=arr.length;
         int min=Integer.MAX_VALUE;
@@ -91,6 +108,7 @@ public class Main {
         }
         return ans;
     }
+    //getting maxMinSubarray using BRUTEFORCE(OPTIMISED).
     public static int maxMinSubarray2(int[] arr){
         int n=arr.length;
         int min=Integer.MAX_VALUE;
@@ -115,6 +133,7 @@ public class Main {
         }
         return ans;
     }
+    //Getting MAXMINSUBARRAY using carryforward/backward.
     public static int maxMinSubarray3(int[] arr){
         int n=arr.length;
         int min=Integer.MAX_VALUE;
@@ -147,20 +166,38 @@ public class Main {
         }
         return ans;
     }
+    //Best time to buy and sell stock using carryforward/backward.
+    public static int maxProfit(int[] arr){
+        int n = arr.length;
+        int selling_value = arr[n-1];
+        int max_Profit = Integer.MIN_VALUE;
+        for(int i=n-1; i>=0; i--){
+            if(arr[i]>selling_value){
+                selling_value = arr[i];
+            }
+            max_Profit = Math.max(max_Profit, selling_value-arr[i]);
+
+        }
+        return max_Profit;
+    }
     public static void main(String[] args) {
         Scanner scn = new Scanner(System.in);
-//        int n = scn.nextInt();
-//        int[] arr = new int[n];
-//        for(int i=0; i<n; i++){
-//            arr[i] = scn.nextInt();
-//        }
+        int n = scn.nextInt();
+        int[] arr = new int[n];
+        for(int i=0; i<n; i++){
+            arr[i] = scn.nextInt();
+        }
 //        ArrayList<ArrayList<Integer>> totalSubarrays = totalSubArrays(arr);
 //        int maxMin = maxMinSubarray3(arr);
 //        System.out.println(totalSubarrays);
 //        System.out.println(maxMin);
-        String S = scn.next();
-        int countA_GPAirs = countPairs3(S);
-        System.out.println(countA_GPAirs);
+//        String S = scn.next();
+//        int countA_GPAirs = countPairs3(S);
+//        System.out.println(countA_GPAirs);
+//        ArrayList<Integer> leaderInArray = leadersInArray(arr);
+//        System.out.println(leaderInArray);
+        int max_profit_in_stocks = maxProfit(arr);
+        System.out.println(max_profit_in_stocks);
 
     }
 }
