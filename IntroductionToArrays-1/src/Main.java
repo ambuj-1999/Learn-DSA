@@ -96,7 +96,7 @@ public class Main {
         int max = arr[0];
         for(int i=1; i<n; i++){
             if(arr[i]>max){
-                max =a rr[i];
+                max =arr[i];
             }
         }
         int t=0;
@@ -105,6 +105,52 @@ public class Main {
         }
         return t;
     }
+    //Count of elements
+    public static int countOfElements(int[] arr){
+        int n = arr.length;
+        int max = arr[0];
+        int count = 0;
+        for(int i=1; i<n; i++){
+            if(arr[i]==max) continue;
+            if(arr[i]>max){
+                max = arr[i];
+                count = i;
+            }
+            else{
+                count++;
+            }
+
+        }
+        return count;
+    }
+    //second largest element of an array.
+    public static int secondfLargestElement(int arr[]){
+        int n = arr.length;
+        int max = arr[0];
+        int diff = Integer.MAX_VALUE;
+        boolean flag = false;
+        int j = 0;
+        if(n==1) return -1;
+        for(int i=1; i<n; i++){
+            if(arr[i]>max){
+                max = arr[i];
+            }
+        }
+        for(int i=0; i<n; i++){
+            if(arr[i]!=max){
+                flag = true;
+                if(diff>max-arr[i]){
+                    diff = max-arr[i];
+                    j = i;
+                }
+            }
+
+
+        }
+        if(flag) return arr[j];
+        return -1;
+    }
+
 
     public static void main(String[] args) {
         Scanner scn = new Scanner(System.in);
@@ -113,7 +159,7 @@ public class Main {
         for(int i=0; i<n; i++){
             arr[i] = scn.nextInt();
         }
-        int B = scn.nextInt();
+        //int B = scn.nextInt();
 //        int C = scn.nextInt();
 //        int has_good_pair = goodPair(arr,B);
 //        System.out.println(has_good_pair);
@@ -128,14 +174,20 @@ public class Main {
 //            System.out.print(i+" ");
 //        }
 
-//        int max_min_sum = findMaxMinSum(arr);
-//        System.out.println(max_min_sum);
+        int max_min_sum = findMaxMinSum(arr);
+        System.out.println(max_min_sum);
 
 //        int frequency_of_b = findNumberOfOccurenceOfB(arr,B);
 //        System.out.println(frequency_of_b);
 
-        int time_to_equality = timeToEquality(arr);
-        System.out.println(time_to_equality);
+//        int time_to_equality = timeToEquality(arr);
+//        System.out.println(time_to_equality);
+
+//        int count_of_elements = countOfElements(arr);
+//        System.out.println(count_of_elements);
+
+//        int second_largest_element = secondfLargestElement(arr);
+//        System.out.println(second_largest_element);
 
 
     }
