@@ -90,6 +90,21 @@ public class Main {
         }
         return count;
     }
+    //Time to equality.
+    public static int timeToEquality(int[] arr){
+        int n = arr.length;
+        int max = arr[0];
+        for(int i=1; i<n; i++){
+            if(arr[i]>max){
+                max =a rr[i];
+            }
+        }
+        int t=0;
+        for(int i:arr){
+            t+=max-i;
+        }
+        return t;
+    }
 
     public static void main(String[] args) {
         Scanner scn = new Scanner(System.in);
@@ -116,8 +131,11 @@ public class Main {
 //        int max_min_sum = findMaxMinSum(arr);
 //        System.out.println(max_min_sum);
 
-        int frequency_of_b = findNumberOfOccurenceOfB(arr,B);
-        System.out.println(frequency_of_b);
+//        int frequency_of_b = findNumberOfOccurenceOfB(arr,B);
+//        System.out.println(frequency_of_b);
+
+        int time_to_equality = timeToEquality(arr);
+        System.out.println(time_to_equality);
 
 
     }
