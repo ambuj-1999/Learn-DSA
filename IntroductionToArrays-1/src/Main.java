@@ -1,6 +1,6 @@
 import java.util.*;
 public class Main {
-    //creating hashmap from array.
+    //creating hashmap from array.1
     public static HashMap<Integer,Integer> arrayTOHashMap(int[] arr){
         int n = arr.length;
         HashMap<Integer,Integer> hm = new HashMap<>();
