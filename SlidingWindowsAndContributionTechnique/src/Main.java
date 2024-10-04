@@ -1,3 +1,5 @@
+import org.w3c.dom.ls.LSOutput;
+
 import java.util.*;
 
 public class Main {
@@ -164,6 +166,60 @@ public class Main {
         }
         return maxSum;
     }
+    //maximum of all possible subarray sum not greater than B. (T.C=O(N^2), S.C=O(1))
+    public static int maxSum(int[] arr,int B){
+        int n = arr.length;
+        int maxSum = Integer.MIN_VALUE;
+        boolean flag = false;
+        for(int s=0; s<n; s++){
+            int sum=0;
+            for(int e=s; e<n; e++){
+                sum+=arr[e];
+                if(sum<=B){
+                    maxSum = Math.max(maxSum,sum);
+                    flag = true;
+                }
+            }
+        }
+        if(flag) return maxSum;
+        return 0;
+    }
+
+    //check whether there exist an array with length B and sum C.
+    public static int[] arrayOfLengthBandSumC(int[] arr, int B, int C){
+        int n = arr.length;
+        int s=0, e=B-1;
+        int sum = 0;
+        for(int i=s; i<=e; i++){
+            sum+=arr[i];
+        }
+        if(sum==C){
+            int[] arr1 = new int[e-s+1];
+            int j = 0;
+            for(int i=s; i<=e; i++){
+                arr1[j] = arr[i];
+                j++;
+            }
+            return arr1;
+        };
+        s++;
+        e++;
+        while(e<n){
+            sum+=arr[e]-arr[s-1];
+            if(sum==C) {
+                int j=0;
+                int[] arr1 = new int[e-s+1];
+                for(int i=s; i<=e;i++){
+                    arr1[j] = arr[i];
+                    j++;
+                }
+                return arr1;
+            }
+            e++;
+            s++;
+        }
+        return null;
+    }
 
 
     public static void main(String[] args) {
@@ -176,8 +232,22 @@ public class Main {
 //        int sum_of_all_subarrays = sumOfAllSubArrays3(arr);
 //        System.out.println(sum_of_all_subarrays);
         int K = scn.nextInt();
+        int C = scn.nextInt();
 //        printStartingEndingIndex(arr,K);
-        int max_sum_of_subarrays = maxSumOfSubArraysOfLengthK2(arr,K);
-        System.out.println(max_sum_of_subarrays);
+//        int max_sum_of_subarrays = maxSumOfSubArraysOfLengthK2(arr,K);
+//        System.out.println(max_sum_of_subarrays);
+//        int max_sum_less_than_B = maxSum(arr,K);
+//        System.out.println(max_sum_less_than_B);
+        int[] present_or_not = arrayOfLengthBandSumC(arr,K,C);
+
+        if(present_or_not!=null) {
+            for (int i : present_or_not) {
+                System.out.print(i + " ");
+            }
+        }
+        else{
+            System.out.println("No such Sub-Array found!!");
+        }
+
     }
 }
