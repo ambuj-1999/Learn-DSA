@@ -185,7 +185,7 @@ public class Main {
         return 0;
     }
 
-    //check whether there exist an array with length B and sum C.
+    //check whether there exist an array with length B and sum C.(T.C=O(N),S.C=O(1))
     public static int[] arrayOfLengthBandSumC(int[] arr, int B, int C){
         int n = arr.length;
         int s=0, e=B-1;
@@ -221,6 +221,53 @@ public class Main {
         return null;
     }
 
+    //Good Sub-Arrays Problem. (T.C=O(N^2), S.C=O(1))
+    public static int goodSubarray(int[] A, int B){
+        int n = A.length;
+        int count = 0;
+        for(int s=0; s<n; s++){
+            int sum=0;
+            for(int e=s; e<n;e++){
+                sum+=A[e];
+                if((e-s+1)%2==0 && sum<B){
+                    count++;
+                }
+                if((e-s+1)%2!=0 && sum>B){
+                    count++;
+                }
+            }
+
+        }
+        return count;
+    }
+
+    //sub-array with least average.
+    public static int leastAverageSubArray(int[] arr, int B){
+        int n = arr.length;
+        int s=0, e=B-1;
+        int sum = 0;
+        int average = 0;
+        for(int i=s; i<e; i++){
+            sum+=arr[i];
+            average = sum/B;
+        }
+        int least_average = average;
+        int j=0;
+        s++;
+        e++;
+        while(e<n){
+            sum+=arr[e]-arr[s-1];
+            average = sum/B;
+            if(average<least_average){
+                least_average = average;
+                j = s;
+            }
+            s++;
+            e++;
+        }
+        return j;
+    }
+
 
     public static void main(String[] args) {
         Scanner scn = new Scanner(System.in);
@@ -232,22 +279,28 @@ public class Main {
 //        int sum_of_all_subarrays = sumOfAllSubArrays3(arr);
 //        System.out.println(sum_of_all_subarrays);
         int K = scn.nextInt();
-        int C = scn.nextInt();
+        //int C = scn.nextInt();
 //        printStartingEndingIndex(arr,K);
 //        int max_sum_of_subarrays = maxSumOfSubArraysOfLengthK2(arr,K);
 //        System.out.println(max_sum_of_subarrays);
 //        int max_sum_less_than_B = maxSum(arr,K);
 //        System.out.println(max_sum_less_than_B);
-        int[] present_or_not = arrayOfLengthBandSumC(arr,K,C);
+//        int[] present_or_not = arrayOfLengthBandSumC(arr,K,C);
+//
+//        if(present_or_not!=null) {
+//            for (int i : present_or_not) {
+//                System.out.print(i + " ");
+//            }
+//        }
+//        else{
+//            System.out.println("No such Sub-Array found!!");
+//        }
+//
+//        int good_sub_array = goodSubarray(arr,K);
+//        System.out.println(good_sub_array);
 
-        if(present_or_not!=null) {
-            for (int i : present_or_not) {
-                System.out.print(i + " ");
-            }
-        }
-        else{
-            System.out.println("No such Sub-Array found!!");
-        }
+        int least_average = leastAverageSubArray(arr,K);
+        System.out.println(least_average);
 
     }
 }
